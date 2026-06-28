@@ -58,7 +58,7 @@ I updated the raylibCmakeSetup from meemknight and structure it a bit more
 - Open `src/gameLayer/gameLayer.cpp` to start writing your game logic
 - inside `include/platform/macros.hpp` at the top of the file you can find a lot of macros to configure your game, like window size, title, etc. You can change them there.
 - I added tools from samengine (you can completly remove them if you want to, but I think they are useful)
-	- seg, a tool to generate a link file for open source credits. You can install it via cargo (`cargo i samtool`) or with npm (`npm i @shadowdara/seg`) or just run npm i because i already added it to the package.json
+	- seg, a tool to generate a link file for open source credits. You can install it via cargo (`cargo i samtool`) or with npm (`npm i @shadowdara/seg`) or just run npm i because i already added it to the package.json. To execute it, run `npx seg -l help` or `seg -l help` if you installed it globally or via cargo. This will display you the help menu for seg.
 	- minisite, a tool bundle multiple markdown files into one single html file after parsing them to HTML. You can install it via (`npm i`).
 	- to uninstall the samengine tools, delete:
 		- package.json
@@ -66,4 +66,6 @@ I updated the raylibCmakeSetup from meemknight and structure it a bit more
 		- .samengine/
 		- pages/
 
-PS: feel free to send me an PR, Issue or emal at shadowdara74@gmail.com for questions, suggestions or anything else. I will be happy to help you!
+PS: feel free to send me an PR, Issue or email at shadowdara74@gmail.com for questions, suggestions or anything else. I will be happy to help you!
+
+My blog: [shadowdara.wordpress.com](https://shadowdara.wordpress.com)

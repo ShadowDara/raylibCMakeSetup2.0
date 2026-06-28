@@ -3,6 +3,23 @@
 struct GameData
 {
 	// ADD YOUR GAME DATA HERE
+
+	// Game Version
+	// use parseVersion to parse the version string into a Version struct
+	// this is useful for comparing versions later on when you want to
+	// add new features or fix bugs
+	// or loading older save files that are not compatible with the new version
+	//
+	// You can Compare versions like this:
+	// 
+	//Version a = parseVersion("1.2.0");
+	//Version b = parseVersion("1.10.0");
+
+	//if (a < b)
+	//{
+	//	// true
+	//}
+	Version version = parseVersion(GAME_VERSION);
 };
 
 

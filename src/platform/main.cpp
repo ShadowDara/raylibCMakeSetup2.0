@@ -1,3 +1,6 @@
+// Main Entry Point
+// macros are defined in macros.hpp
+
 
 #include "macros.hpp"
 
@@ -46,6 +49,9 @@ int main(void)
 		style.Colors[ImGuiCol_WindowBg].w = 0.5f;
 		//style.Colors[ImGuiCol_DockingEmptyBg].w = 0.f;
 	}
+
+	// Deactivate ini file
+	ImGui::GetIO().IniFilename = nullptr;
 #endif
 #pragma endregion
 

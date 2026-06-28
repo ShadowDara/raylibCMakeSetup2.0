@@ -9,7 +9,7 @@
   "author": [ "meemknight", "Shadowdara" ],
   "license": "ISC",
   "devDependencies": {
-    "@shadowdara/seg": "^0.1.21",
-    "samengine-cli": "2.0.5"
+    "@shadowdara/seg": "^0.1.24",
+    "samengine-cli": "2.0.6"
   }
 }

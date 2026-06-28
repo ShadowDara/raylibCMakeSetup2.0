@@ -14,5 +14,8 @@
     }
   ],
   "links2": [],
-  "note": "This file was generated with seg from the samengine project. https://samengine.js.org"
+  "links3": [
+    "resources/License.txt"
+  ],
+  "note": "This file was generated with linksaver from seg from the samengine project. https://samengine.js.org or https://github.com/shadowdara/seg"
 }
