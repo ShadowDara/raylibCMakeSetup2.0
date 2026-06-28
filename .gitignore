@@ -11,3 +11,6 @@ Makefile
 
 node_modules/
 bun.lock
+
+# Minisite export
+index.html

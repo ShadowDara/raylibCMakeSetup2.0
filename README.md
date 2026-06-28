@@ -47,3 +47,20 @@ After you add a file, the changes should be automatically added but if you want 
 
 
 # Shadowdara's modifications:
+
+I updated the raylibCmakeSetup from meemknight and structure it a bit more
+
+my changes: 
+
+- I added new lib to the thirdparty directory
+- I created a gameLayer and platformLayer to separate the game logic from the platform specific code
+- Open `src/gameLayer/gameLayer.cpp` to start writing your game logic
+- inside `src/platform/main.cpp` at the top of the file you can find a lot of macros to configure your game, like window size, title, etc. You can change them there.
+- I added tools from samengine (you can completly remove them if you want to, but I think they are useful)
+	- seg, a tool to generate a link file for open source credits. You can install it via cargo (`cargo i samtool`) or with npm (`npm i @shadowdara/seg`) or just run npm i because i already added it to the package.json
+	- minisite, a tool bundle multiple markdown files into one single html file after parsing them to HTML. You can install it via (`npm i`).
+	- to uninstall the samengine tools, delete:
+		- package.json
+		- package-lock.json
+		- .samengine/
+		- pages/
