@@ -1,18 +1,16 @@
 
-// Game window name
-#define GAME_WINDOW_NAME "raylib [core] example - basic window"
-#define GAME_WINDOW_WIDTH 800
-#define GAME_WINDOW_HEIGHT 450
-
+#include "macros.hpp"
 
 #include "raylib.h"
 #include <iostream>
 
-#pragma region imgui
-#include "imgui.h"
-#include "rlImGui.h"
-#include "imguiThemes.h"
-#pragma endregion
+
+#if REMOVE_IMGUI == 0
+	#include "imgui.h"
+	#include "rlImGui.h"
+	#include "imguiThemes.h"
+#endif
+
 
 #include "gameLayer.hpp"
 
@@ -24,6 +22,7 @@ int main(void)
 	InitWindow(GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT, GAME_WINDOW_NAME);
 
 #pragma region imgui
+#if REMOVE_IMGUI == 0
 	rlImGuiSetup(true);
 
 	//you can use whatever imgui theme you like!
@@ -47,39 +46,25 @@ int main(void)
 		style.Colors[ImGuiCol_WindowBg].w = 0.5f;
 		//style.Colors[ImGuiCol_DockingEmptyBg].w = 0.f;
 	}
-
+#endif
 #pragma endregion
 
 	initGame();
 
 	while (!WindowShouldClose())
 	{
+		BeginDrawing();
+
+#pragma region imgui
+#if REMOVE_IMGUI == 0
+		rlImGuiBegin();
+#endif
+#pragma endregion
+
 		updateGame(GetFrameTime());
 
-
-	#pragma region imgui
-		rlImGuiBegin();
-
-		ImGui::PushStyleColor(ImGuiCol_WindowBg, {});
-		ImGui::PushStyleColor(ImGuiCol_DockingEmptyBg, {});
-		ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
-		ImGui::PopStyleColor(2);
-	#pragma endregion
-
-
-		ImGui::Begin("Test");
-
-		ImGui::Text("Hello");
-		ImGui::Button("Button");
-		ImGui::Button("Button2");
-
-		ImGui::End();
-
-
-		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
-
-	#pragma region imgui
+#pragma region imgui
+#if REMOVE_IMGUI == 0
 		rlImGuiEnd();
 
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -87,14 +72,17 @@ int main(void)
 			ImGui::UpdatePlatformWindows();
 			ImGui::RenderPlatformWindowsDefault();
 		}
-	#pragma endregion
+#endif
+#pragma endregion
 
 		EndDrawing();
 	}
 
 
 #pragma region imgui
+#if REMOVE_IMGUI == 0
 	rlImGuiShutdown();
+#endif
 #pragma endregion
 
 	CloseWindow();
