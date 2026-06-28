@@ -1,6 +1,6 @@
 # RaylibCmakeSetup 
 
-PS: This Template was modified by Shadowdara, more infos down below.
+**PS: This Template was modified by Shadowdara, more infos down below.**
 
 ---
 
@@ -46,11 +46,12 @@ After you add a file, the changes should be automatically added but if you want 
   Also, if you read the CMAKE, even if you don't know CMAKE you should understand what happens with the comments there and you can add libraries and also remove the console from there if you need to! (there is a commented line for that!)
 
 
+
 # Shadowdara's modifications:
 
 I updated the raylibCmakeSetup from meemknight and structure it a bit more
 
-my changes: 
+**my changes**: 
 
 - I added new lib to the thirdparty directory
 - I created a gameLayer and platformLayer to separate the game logic from the platform specific code
@@ -64,3 +65,5 @@ my changes:
 		- package-lock.json
 		- .samengine/
 		- pages/
+
+PS: feel free to send me an PR, Issue or emal at shadowdara74@gmail.com for questions, suggestions or anything else. I will be happy to help you!
