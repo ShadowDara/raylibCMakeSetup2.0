@@ -15,10 +15,14 @@ project(mygame)
 set(PRODUCTION_BUILD OFF CACHE BOOL "Make this a production build" FORCE)
 #delete the out folder after changing if visual studio doesn recognize the change!
 
-if(MSVC) 
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-add_compile_options(/arch:AVX2) #make sure SIMD optimizations take place
+
+# ON MSCV and for Desktop
+if(MSVC)
+	if (NOT EMSCRIPTEN)
+		set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
+		set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+		add_compile_options(/arch:AVX2) #make sure SIMD optimizations take place
+	endif()
 endif()
 
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE) #link time optimization
@@ -55,18 +59,16 @@ add_subdirectory(thirdparty/profilerLib)		#profiling, just a simpe library for m
 #add_subdirectory(thirdparty/glui)		
 
 
+if (EMSCRIPTEN)
+    set(PLATFORM Web CACHE STRING "" FORCE)
+    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+endif()
+
 
 #Add raylib, and here you would add other libraries if needed!
 add_subdirectory(thirdparty/raylib-5.0)
 add_subdirectory(thirdparty/imgui-docking)
 add_subdirectory(thirdparty/rlImGui)
-
-
-# for raylib web
-if (EMSCRIPTEN)
-    target_compile_definitions(raylib PUBLIC PLATFORM_WEB)
-    set(CMAKE_EXECUTABLE_SUFFIX ".html")
-endif()
 
 
 # MY_SOURCES is defined to be a list of all the source files for my game 
@@ -133,3 +135,13 @@ target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE
 	raylib_static imgui rlimgui glm	glad stb_image stb_truetype
 	profilerLib
 )
+
+
+# linking in the web export
+if (EMSCRIPTEN)
+	# Link raylib not static in the web export
+	target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE 
+		raylib imgui rlimgui glm	glad stb_image stb_truetype
+		profilerLib
+	)
+endif()
