@@ -1,0 +1,15 @@
+{
+  "name": "raylibcmakesetup",
+  "version": "1.0.0",
+  "description": "---",
+  "scripts": {
+    "generate": "npx seg -l view && node .samengine/copy.js && npm run build",
+    "build": "npx sam-cli minisite"
+  },
+  "author": [ "meemknight", "Shadowdara" ],
+  "license": "ISC",
+  "devDependencies": {
+    "@shadowdara/seg": "^0.1.21",
+    "samengine-cli": "2.0.5"
+  }
+}
