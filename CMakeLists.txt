@@ -33,7 +33,6 @@ set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 
 
-#add_subdirectory(thirdparty/glfw-3.3.2)			#window oppener
 add_subdirectory(thirdparty/glad)				#opengl loader
 add_subdirectory(thirdparty/stb_image)			#loading immaged
 add_subdirectory(thirdparty/stb_truetype)		#loading ttf files
@@ -109,7 +108,13 @@ target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURC
 target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/gameLayer")
 
 
+#ADD enet version! also don't forget to uncomment enet from above
+#target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE raylib_static rlimgui glm 
+#	glad stb_image stb_truetype gl2d raudio imgui safeSave profilerLib enet glui)
+
+
 # Link raylib library statically, Here wou would add other libraries!
 target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE 
-	raylib_static imgui rlimgui glm	glad stb_image stb_truetype gl2d raudio safeSave profilerLib glui
+	raylib_static imgui rlimgui glm	glad stb_image stb_truetype gl2d raudio
+	safeSave profilerLib glui
 )

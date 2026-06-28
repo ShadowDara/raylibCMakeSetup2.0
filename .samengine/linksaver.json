@@ -1,0 +1,18 @@
+{
+  "projectname": "raylibCmakeSetup2.0",
+  "pretty": true,
+  "links": [
+    {
+      "name": "raylibCmakeTemplate",
+      "link": "https://github.com/meemknight/raylibCmakeSetup",
+      "description": "Plug and raylib + imgui already configured for you 🙀! You don't even need to know CMake!",
+      "license": "None",
+      "author": "meemknight",
+      "licenselink": "/",
+      "showinlist": true,
+      "changenotice": true
+    }
+  ],
+  "links2": [],
+  "note": "This file was generated with seg from the samengine project. https://github.com/shadowdara/seg https://samengine.js.org"
+}
