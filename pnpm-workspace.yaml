@@ -1,0 +1,5 @@
+allowBuilds:
+  '@shadowdara/seg': true
+minimumReleaseAgeExclude:
+  - '@shadowdara/seg@0.1.24'
+  - samengine-cli@2.0.6

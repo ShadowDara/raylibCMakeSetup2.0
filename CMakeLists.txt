@@ -33,18 +33,26 @@ set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 
 
+# to compile with emscripten
+if (EMSCRIPTEN)
+    set(PLATFORM Web CACHE STRING "" FORCE)
+endif()
+
+
 add_subdirectory(thirdparty/glad)				#opengl loader
 add_subdirectory(thirdparty/stb_image)			#loading immaged
 add_subdirectory(thirdparty/stb_truetype)		#loading ttf files
 #add_subdirectory(thirdparty/enet-1.3.17)		#networking
-add_subdirectory(thirdparty/raudio)				#audio
 add_subdirectory(thirdparty/glm)				#math
 #add_subdirectory(thirdparty/imgui-docking)		#ui
-#----------V-----------------------V------------#my libraries												
-add_subdirectory(thirdparty/safeSave)			#saving data, designed for gamedev. It also makes backups so the player won't loose saves.
+#----------V-----------------------V------------#my libraries								
+
+# Doesnt work yet in the web export				
+#add_subdirectory(thirdparty/safeSave)			#saving data, designed for gamedev. It also makes backups so the player won't loose saves.
 add_subdirectory(thirdparty/profilerLib)		#profiling, just a simpe library for measuring elapsed time
-add_subdirectory(thirdparty/gl2d)				#2D rendering library
-add_subdirectory(thirdparty/glui)		
+
+#add_subdirectory(thirdparty/gl2d)				#2D rendering library
+#add_subdirectory(thirdparty/glui)		
 
 
 
@@ -52,6 +60,13 @@ add_subdirectory(thirdparty/glui)
 add_subdirectory(thirdparty/raylib-5.0)
 add_subdirectory(thirdparty/imgui-docking)
 add_subdirectory(thirdparty/rlImGui)
+
+
+# for raylib web
+if (EMSCRIPTEN)
+    target_compile_definitions(raylib PUBLIC PLATFORM_WEB)
+    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+endif()
 
 
 # MY_SOURCES is defined to be a list of all the source files for my game 
@@ -110,11 +125,11 @@ target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURC
 
 #ADD enet version! also don't forget to uncomment enet from above
 #target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE raylib_static rlimgui glm 
-#	glad stb_image stb_truetype gl2d raudio imgui safeSave profilerLib enet glui)
+#	glad stb_image stb_truetype imgui profilerLib enet)
 
 
 # Link raylib library statically, Here wou would add other libraries!
 target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE 
-	raylib_static imgui rlimgui glm	glad stb_image stb_truetype gl2d raudio
-	safeSave profilerLib glui
+	raylib_static imgui rlimgui glm	glad stb_image stb_truetype
+	profilerLib
 )

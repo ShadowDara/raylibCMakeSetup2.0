@@ -1,0 +1,6 @@
+# A new samfile, write your scripts here
+
+# Build the project for web using Emscripten
+build:
+    RUN emcmake cmake -B build-web
+    RUN cmake cmake -B build-web

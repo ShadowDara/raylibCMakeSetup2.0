@@ -65,6 +65,8 @@ I updated the raylibCmakeSetup from meemknight and structure it a bit more
 		- package-lock.json
 		- .samengine/
 		- pages/
+- I added some function like a version parser for the Version format *(MAJOR, MINOR, PATCH)*
+- added export with emscripten for the web
 
 PS: feel free to send me an PR, Issue or email at shadowdara74@gmail.com for questions, suggestions or anything else. I will be happy to help you!
 
