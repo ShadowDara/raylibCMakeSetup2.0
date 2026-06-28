@@ -1,3 +1,10 @@
+
+// Game window name
+#define GAME_WINDOW_NAME "raylib [core] example - basic window"
+#define GAME_WINDOW_WIDTH 800
+#define GAME_WINDOW_HEIGHT 450
+
+
 #include "raylib.h"
 #include <iostream>
 
@@ -7,13 +14,14 @@
 #include "imguiThemes.h"
 #pragma endregion
 
+#include "gameLayer.hpp"
 
 
 int main(void)
 {
 
 	SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-	InitWindow(800, 450, "raylib [core] example - basic window");
+	InitWindow(GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT, GAME_WINDOW_NAME);
 
 #pragma region imgui
 	rlImGuiSetup(true);
@@ -42,12 +50,11 @@ int main(void)
 
 #pragma endregion
 
-
+	initGame();
 
 	while (!WindowShouldClose())
 	{
-		BeginDrawing();
-		ClearBackground(RAYWHITE);
+		updateGame(GetFrameTime());
 
 
 	#pragma region imgui
@@ -90,9 +97,13 @@ int main(void)
 	rlImGuiShutdown();
 #pragma endregion
 
-
-
 	CloseWindow();
+
+	closeGame();
+
+	//if you want the console to stay after closing the window
+	//std::cin.clear();
+	//std::cin.get();
 
 	return 0;
 }

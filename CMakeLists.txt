@@ -5,6 +5,9 @@ cmake_minimum_required(VERSION 3.16...4.3)
 
 set(CMAKE_CXX_STANDARD 17)
 
+project(mygame)
+
+
 #! ! ! ! ! ! !
 #set this to ON instead of OFF to ship the game!
 #basically this will change the RESOURCES_PATH to be the local path
@@ -23,11 +26,26 @@ set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE) #link time optimization
 # Ensure SFML is built as static libraries
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build Raylib as static libraries" FORCE)
 
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 
 
-
-project(mygame)
-
+#add_subdirectory(thirdparty/glfw-3.3.2)			#window oppener
+add_subdirectory(thirdparty/glad)				#opengl loader
+add_subdirectory(thirdparty/stb_image)			#loading immaged
+add_subdirectory(thirdparty/stb_truetype)		#loading ttf files
+#add_subdirectory(thirdparty/enet-1.3.17)		#networking
+add_subdirectory(thirdparty/raudio)				#audio
+add_subdirectory(thirdparty/glm)				#math
+#add_subdirectory(thirdparty/imgui-docking)		#ui
+#----------V-----------------------V------------#my libraries												
+add_subdirectory(thirdparty/safeSave)			#saving data, designed for gamedev. It also makes backups so the player won't loose saves.
+add_subdirectory(thirdparty/profilerLib)		#profiling, just a simpe library for measuring elapsed time
+add_subdirectory(thirdparty/gl2d)				#2D rendering library
+add_subdirectory(thirdparty/glui)		
 
 
 
@@ -83,5 +101,5 @@ target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURC
 
 # Link raylib library statically, Here wou would add other libraries!
 target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE 
-	raylib_static imgui rlimgui
+	raylib_static imgui rlimgui glm	glad stb_image stb_truetype gl2d raudio safeSave profilerLib glui
 )
