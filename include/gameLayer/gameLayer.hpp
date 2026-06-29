@@ -1,14 +1,8 @@
 #pragma once
 
-#include <string>
-
-#include "raylib.h"
-#include "imgui.h"
+// Import are here in the cpp file so user sees it
 
 #include "macros.hpp"
-#include "version.hpp"
-#include "imguiTools.h"
-
 
 void initGame();
 

@@ -1,5 +1,19 @@
 #include "gameLayer.hpp"
 
+#include <string>
+
+#include "raylib.h"
+#include "imgui.h"
+
+#include "macros.hpp"
+#include "version.hpp"
+#include "imguiTools.h"
+
+#include "stringManipulation.h"
+#include "utility.hpp"
+
+
+
 struct GameData
 {
 	// ADD YOUR GAME DATA HERE
