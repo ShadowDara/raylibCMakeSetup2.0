@@ -31,6 +31,16 @@
       "licenselink": "/",
       "showinlist": true,
       "changenotice": true
+    },
+    {
+      "name": "Raylibsetup2.0",
+      "link": "https://github.com/ShadowDara/raylibCMakeSetup2.0",
+      "description": "The Cmake template for raylib with export and tools!",
+      "license": "MIT",
+      "author": "Shadowdara",
+      "licenselink": "https://mit-license.org/",
+      "showinlist": true,
+      "changenotice": true
     }
   ],
   "links2": [],
