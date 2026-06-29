@@ -32,3 +32,31 @@ dev:
     SHELL npm run movlicense
     SHELLWIN start http://localhost:8080/mygame.html
     SHELL npm run dev
+    PROMPT
+
+
+# Make the webbuild
+webbuild:
+    echo ==========================================
+    echo Delete old build!
+    echo ==========================================
+    RM build
+
+    echo
+    echo ==========================================
+    echo Configure CMAKE project with emcmake ...
+    echo ==========================================
+    SHELL emcmake cmake -B build
+
+    echo.
+    echo ==========================================
+    echo Build Project...
+    echo ==========================================
+    SHELL emmake cmake --build build -j
+
+    echo.
+    echo ==========================================
+    echo Finished!
+    echo ==========================================
+
+    PROMPT
