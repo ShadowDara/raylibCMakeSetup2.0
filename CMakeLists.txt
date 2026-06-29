@@ -151,6 +151,7 @@ if (EMSCRIPTEN)
 		#stb_image
 		#stb_truetype
 		#profilerLib
+		glad
 	)
 	
 	target_link_options(mygame PRIVATE

@@ -28,8 +28,6 @@ dev:
     echo Open the Dev Server in your browser via the following link:
     echo http://localhost:8080/mygame.html
     echo
-    SHELL npm run generate
-    SHELL npm run movlicense
     SHELLWIN start http://localhost:8080/mygame.html
     SHELL npm run dev
     PROMPT
@@ -53,6 +51,8 @@ webbuild:
     echo Build Project...
     echo ==========================================
     SHELL emmake cmake --build build -j
+    SHELL npm run generate
+    SHELL npm run movlicense
 
     echo.
     echo ==========================================

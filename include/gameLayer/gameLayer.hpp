@@ -7,6 +7,7 @@
 
 #include "macros.hpp"
 #include "version.hpp"
+#include "imguiTools.h"
 
 
 void initGame();

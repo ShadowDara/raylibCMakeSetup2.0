@@ -11,4 +11,4 @@
 
 // Set to 1 to remove imgui
 // This is useful for the export
-#define REMOVE_IMGUI 1
+#define REMOVE_IMGUI 0
