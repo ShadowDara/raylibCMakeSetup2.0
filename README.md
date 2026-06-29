@@ -51,6 +51,8 @@ After you add a file, the changes should be automatically added but if you want 
 
 I updated the raylibCmakeSetup from meemknight and structure it a bit more
 
+> i know some people wont like that i added the js ecosystem here for tools because of the big `node_modules` directory, but i tested it, its only **7mb** which i dont think is a big deal!
+
 **my changes**: 
 
 - I added new lib to the thirdparty directory
