@@ -4,7 +4,8 @@
   "description": "---",
   "scripts": {
     "generate": "npx seg -l view && node .samengine/copy.js && npm run build",
-    "build": "npx sam-cli minisite"
+    "build": "npx sam-cli minisite",
+    "read": "npx automatic-md-index --files=README.md --no-strict --no-timestamp"
   },
   "author": [
     "meemknight",
@@ -12,9 +13,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@shadowdara/seg": "^0.1.24",
-    "automatic-md-index": "^1.3.6",
+    "@shadowdara/seg": "0.1.24",
+    "automatic-md-index": "1.3.7",
     "samengine-cli": "2.0.6",
-    "http-server": "^14.1.1"
+    "http-server": "14.1.1"
   }
 }

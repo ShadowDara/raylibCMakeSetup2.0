@@ -4,9 +4,9 @@ setlocal
 REM Pfad zu deinem Projekt
 cd /d "%~dp0"
 
-echo ======================================
-echo Loesche alten Build...
-echo ======================================
+echo ==========================================
+echo Delete old build!
+echo ==========================================
 
 if exist build (
     rmdir /s /q build
@@ -19,41 +19,41 @@ if exist thirdparty\raylib-5.0\build (
 
 REM Alte Bibliotheken entfernen
 for /r %%f in (libraylib.a) do (
-    echo Loesche %%f
+    echo delete %%f
     del /f /q "%%f"
 )
 
 echo.
-echo ======================================
-echo Konfiguriere mit Emscripten...
-echo ======================================
+echo ==========================================
+echo Configure CMAKE project with emcmake ...
+echo ==========================================
 
 call emcmake cmake -B build
 
 if errorlevel 1 (
     echo.
-    echo CMake-Konfiguration fehlgeschlagen.
+    echo CMake configuration failed.
     pause
     exit /b 1
 )
 
 echo.
-echo ======================================
-echo Baue Projekt...
-echo ======================================
+echo ==========================================
+echo Build Project...
+echo ==========================================
 
 call emmake cmake --build build -j
 
 if errorlevel 1 (
     echo.
-    echo Build fehlgeschlagen.
+    echo Build failed.
     pause
     exit /b 1
 )
 
 echo.
-echo ======================================
-echo Fertig!
-echo ======================================
+echo ==========================================
+echo Finished!
+echo ==========================================
 
 pause

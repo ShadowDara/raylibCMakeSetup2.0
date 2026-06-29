@@ -2,6 +2,27 @@
 
 **PS: This Template was modified by Shadowdara, more infos down below.**
 
+<!--$$MD_INDEX_START$$-->
+<!-- 
+    Index by Automatic MD Index
+    a simple Tool to Index your Markdown files like this
+
+    More Infos:
+    https://github.com/ShadowDara/automatic-md-index
+
+    DO NOT REMOVE THIS CREDIT !!!
+
+    Last Update Time of the Index: 
+-->
+
+## Index
+- [RaylibCmakeSetup](#raylibcmakesetup)
+  - [What is it?](#what-is-it)
+- [IMPORTANT!](#important)
+- [Shadowdara's modifications:](#shadowdaras-modifications)
+<!-- Index by Automatic MD Index -->
+<!--$$MD_INDEX_END$$-->
+
 ---
 
 ## What is it?
@@ -51,7 +72,7 @@ After you add a file, the changes should be automatically added but if you want 
 
 I updated the raylibCmakeSetup from meemknight and structure it a bit more
 
-> i know some people wont like that i added the js ecosystem here for tools because of the big `node_modules` directory, but i tested it, its only **7mb** which i dont think is a big deal!
+> i know some people wont like that i added the js ecosystem here for tools because of the big `node_modules` directory, but i tested it, its only **5mb** which i dont think is a big deal!
 
 **my changes**: 
 
