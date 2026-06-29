@@ -1,5 +1,5 @@
 #https://github.com/meemknight/raylibCmakeSetup
-#Version 1.0.0
+#Version 2.0.0
 
 cmake_minimum_required(VERSION 3.16...4.3)
 
@@ -61,6 +61,10 @@ add_subdirectory(thirdparty/profilerLib)		#profiling, just a simpe library for m
 
 if (EMSCRIPTEN)
     set(PLATFORM Web CACHE STRING "" FORCE)
+	
+	# important linker flags
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY -s GL_ENABLE_GET_PROC_ADDRESS=1")
+	
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif()
 
@@ -130,18 +134,33 @@ target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURC
 #	glad stb_image stb_truetype imgui profilerLib enet)
 
 
-# Link raylib library statically, Here wou would add other libraries!
-target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE 
-	raylib_static imgui rlimgui glm	glad stb_image stb_truetype
-	profilerLib
-)
-
-
 # linking in the web export
 if (EMSCRIPTEN)
 	# Link raylib not static in the web export
 	target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE 
-		raylib imgui rlimgui glm	glad stb_image stb_truetype
+		raylib
+		imgui
+		rlimgui
+		#glm
+		#stb_image
+		#stb_truetype
+		#profilerLib
+	)
+	
+	target_link_options(mygame PRIVATE
+		"--shell-file=${CMAKE_SOURCE_DIR}/minishell.html"
+	)
+else()
+	# for Desktop
+	# Link raylib library statically, Here wou would add other libraries!
+	target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE 
+		raylib_static
+		imgui
+		rlimgui
+		glm
+		glad
+		stb_image
+		stb_truetype
 		profilerLib
 	)
 endif()

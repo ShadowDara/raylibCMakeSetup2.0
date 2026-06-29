@@ -66,8 +66,9 @@ I updated the raylibCmakeSetup from meemknight and structure it a bit more
 		- .samengine/
 		- pages/
 - I added some function like a version parser for the Version format *(MAJOR, MINOR, PATCH)*
-- added export with emscripten for the web
+- look into `utillity.cpp` and `ultility.hpp` to see more!
+- added export with emscripten for the web. On windows run `web_build.bat`, you need the emscripten sdk for that!
 
 PS: feel free to send me an PR, Issue or email at shadowdara74@gmail.com for questions, suggestions or anything else. I will be happy to help you!
 
-My blog: [shadowdara.wordpress.com](https://shadowdara.wordpress.com)
+**My blog**: [shadowdara.wordpress.com](https://shadowdara.wordpress.com)
