@@ -25,10 +25,18 @@ if(MSVC)
 	endif()
 endif()
 
-set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE) #link time optimization
 
-# Ensure SFML is built as static libraries
+#may give problems on linux
+if(PRODUCTION_BUILD)
+	set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE) #link time optimization
+else()
+	set(CMAKE_INTERPROCEDURAL_OPTIMIZATION FALSE)
+endif()
+
+
+# Ensure RayLib is built as static libraries
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build Raylib as static libraries" FORCE)
+
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -92,11 +100,13 @@ if(PRODUCTION_BUILD)
 
 	# remove the option to debug asserts.
 	target_compile_definitions("${CMAKE_PROJECT_NAME}" PUBLIC PRODUCTION_BUILD=1) 
+	target_compile_definitions("${CMAKE_PROJECT_NAME}" PUBLIC DEVELOPLEMT_BUILD=0) 
 
 else()
 	# This is useful to get an ASSETS_PATH in your IDE during development
 	target_compile_definitions("${CMAKE_PROJECT_NAME}" PUBLIC RESOURCES_PATH="${CMAKE_CURRENT_SOURCE_DIR}/resources/")
-	target_compile_definitions("${CMAKE_PROJECT_NAME}" PUBLIC PRODUCTION_BUILD=0) 
+	target_compile_definitions("${CMAKE_PROJECT_NAME}" PUBLIC PRODUCTION_BUILD=0)
+	target_compile_definitions("${CMAKE_PROJECT_NAME}" PUBLIC DEVELOPLEMT_BUILD=1) 
 
 endif()
 
@@ -129,10 +139,6 @@ target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURC
 target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/gameLayer")
 
 
-#ADD enet version! also don't forget to uncomment enet from above
-#target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE raylib_static rlimgui glm 
-#	glad stb_image stb_truetype imgui profilerLib enet)
-
 
 # linking in the web export
 if (EMSCRIPTEN)
@@ -162,5 +168,8 @@ else()
 		stb_image
 		stb_truetype
 		profilerLib
+
+		#ADD enet version! also don't forget to uncomment enet from above
+		# enet
 	)
 endif()
